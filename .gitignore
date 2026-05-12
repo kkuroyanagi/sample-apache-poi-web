@@ -1,0 +1,13 @@
+target/
+frontend/node/
+frontend/node_modules/
+frontend/dist/
+src/main/resources/static/
+.mvn/wrapper/maven-wrapper.jar
+*.class
+*.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+.idea/
+*.iml
+.DS_Store
