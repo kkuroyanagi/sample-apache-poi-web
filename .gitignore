@@ -11,3 +11,5 @@ src/main/resources/static/
 .idea/
 *.iml
 .DS_Store
+.app.log
+.app.pid
