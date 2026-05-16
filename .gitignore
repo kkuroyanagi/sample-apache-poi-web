@@ -11,5 +11,7 @@ src/main/resources/static/
 .idea/
 *.iml
 .DS_Store
-.app.log
+.app.log*
 .app.pid
+.claude/settings.local.json
+.metals/

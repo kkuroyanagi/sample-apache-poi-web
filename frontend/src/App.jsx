@@ -151,9 +151,10 @@ function PerfCard() {
 // ── メイン ────────────────────────────────────────────────────────────────────
 
 export default function App() {
-  const single   = useDownload('/api/excel/download',          'sales_report.xlsx')
-  const multi    = useDownload('/api/excel/download-multi',    'sales_5sheets.xlsx')
-  const editable = useDownload('/api/excel/download-editable', 'sales_editable.xlsx')
+  const single    = useDownload('/api/excel/download',          'sales_report.xlsx')
+  const multi     = useDownload('/api/excel/download-multi',    'sales_5sheets.xlsx')
+  const editable  = useDownload('/api/excel/download-editable', 'sales_editable.xlsx')
+  const protectedSheet = useDownload('/api/excel/download-protected', 'protected_category_sales.xlsx')
 
   return (
     <div className="container">
@@ -215,6 +216,31 @@ export default function App() {
           {editable.loading ? 'ダウンロード中...' : '入力シート Excel をダウンロード'}
         </button>
         {editable.error && <p className="error">{editable.error}</p>}
+      </main>
+
+      <main className="card">
+        <h2>保護されたカテゴリ別売上シート — マスタ保護方式</h2>
+        <table>
+          <tbody>
+            <tr><th>シート 1</th><td>カテゴリ別売上入力（20行・黄色セルに入力）</td></tr>
+            <tr><th>シート 2</th><td>カテゴリマスタ（5カテゴリ・保護済み）</td></tr>
+            <tr><th>シート 3</th><td>商品マスタ（20商品・保護済み）</td></tr>
+            <tr>
+              <th>操作方法</th>
+              <td>
+                カテゴリを選択 → 
+                商品名をプルダウンから選択 →
+                単価が自動設定 →
+                数量を入力 → 合計が自動計算
+              </td>
+            </tr>
+            <tr><th>特徴</th><td>マスタシートが保護されているため、誤編集を防止できます</td></tr>
+          </tbody>
+        </table>
+        <button onClick={protectedSheet.download} disabled={protectedSheet.loading}>
+          {protectedSheet.loading ? 'ダウンロード中...' : '保護シート Excel をダウンロード'}
+        </button>
+        {protectedSheet.error && <p className="error">{protectedSheet.error}</p>}
       </main>
 
       <PerfCard />
