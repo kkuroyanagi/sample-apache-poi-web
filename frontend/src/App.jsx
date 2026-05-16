@@ -154,7 +154,7 @@ export default function App() {
   const single    = useDownload('/api/excel/download',          'sales_report.xlsx')
   const multi     = useDownload('/api/excel/download-multi',    'sales_5sheets.xlsx')
   const editable  = useDownload('/api/excel/download-editable', 'sales_editable.xlsx')
-  const protected = useDownload('/api/excel/download-protected', 'protected_category_sales.xlsx')
+  const protectedSheet = useDownload('/api/excel/download-protected', 'protected_category_sales.xlsx')
 
   return (
     <div className="container">
@@ -237,10 +237,10 @@ export default function App() {
             <tr><th>特徴</th><td>マスタシートが保護されているため、誤編集を防止できます</td></tr>
           </tbody>
         </table>
-        <button onClick={protected.download} disabled={protected.loading}>
-          {protected.loading ? 'ダウンロード中...' : '保護シート Excel をダウンロード'}
+        <button onClick={protectedSheet.download} disabled={protectedSheet.loading}>
+          {protectedSheet.loading ? 'ダウンロード中...' : '保護シート Excel をダウンロード'}
         </button>
-        {protected.error && <p className="error">{protected.error}</p>}
+        {protectedSheet.error && <p className="error">{protectedSheet.error}</p>}
       </main>
 
       <PerfCard />

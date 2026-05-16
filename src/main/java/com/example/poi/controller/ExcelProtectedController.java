@@ -3,6 +3,7 @@ package com.example.poi.controller;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.util.CellRangeAddressList;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -312,31 +313,34 @@ public class ExcelProtectedController {
     // ── シート保護の設定 ────────────────────────────────────────────────────────────
 
     private void protectMasterSheets(Sheet categorySheet, Sheet productSheet) {
+        XSSFSheet cat  = (XSSFSheet) categorySheet;
+        XSSFSheet prod = (XSSFSheet) productSheet;
+
         // カテゴリマスタシートの保護（構造とセルの編集を禁止）
-        categorySheet.protectSheet("");  // パスワードなしで保護
-        categorySheet.getCTWorksheet().getSheetProtection().setSelectLockedCells(true);
-        categorySheet.getCTWorksheet().getSheetProtection().setSelectUnlockedCells(false);
-        categorySheet.getCTWorksheet().getSheetProtection().setFormatCells(false);
-        categorySheet.getCTWorksheet().getSheetProtection().setFormatColumns(false);
-        categorySheet.getCTWorksheet().getSheetProtection().setFormatRows(false);
-        categorySheet.getCTWorksheet().getSheetProtection().setInsertColumns(false);
-        categorySheet.getCTWorksheet().getSheetProtection().setInsertRows(false);
-        categorySheet.getCTWorksheet().getSheetProtection().setInsertHyperlinks(false);
-        categorySheet.getCTWorksheet().getSheetProtection().setDeleteColumns(false);
-        categorySheet.getCTWorksheet().getSheetProtection().setDeleteRows(false);
+        cat.protectSheet("");
+        cat.getCTWorksheet().getSheetProtection().setSelectLockedCells(true);
+        cat.getCTWorksheet().getSheetProtection().setSelectUnlockedCells(false);
+        cat.getCTWorksheet().getSheetProtection().setFormatCells(false);
+        cat.getCTWorksheet().getSheetProtection().setFormatColumns(false);
+        cat.getCTWorksheet().getSheetProtection().setFormatRows(false);
+        cat.getCTWorksheet().getSheetProtection().setInsertColumns(false);
+        cat.getCTWorksheet().getSheetProtection().setInsertRows(false);
+        cat.getCTWorksheet().getSheetProtection().setInsertHyperlinks(false);
+        cat.getCTWorksheet().getSheetProtection().setDeleteColumns(false);
+        cat.getCTWorksheet().getSheetProtection().setDeleteRows(false);
 
         // 商品マスタシートの保護（構造とセルの編集を禁止）
-        productSheet.protectSheet("");  // パスワードなしで保護
-        productSheet.getCTWorksheet().getSheetProtection().setSelectLockedCells(true);
-        productSheet.getCTWorksheet().getSheetProtection().setSelectUnlockedCells(false);
-        productSheet.getCTWorksheet().getSheetProtection().setFormatCells(false);
-        productSheet.getCTWorksheet().getSheetProtection().setFormatColumns(false);
-        productSheet.getCTWorksheet().getSheetProtection().setFormatRows(false);
-        productSheet.getCTWorksheet().getSheetProtection().setInsertColumns(false);
-        productSheet.getCTWorksheet().getSheetProtection().setInsertRows(false);
-        productSheet.getCTWorksheet().getSheetProtection().setInsertHyperlinks(false);
-        productSheet.getCTWorksheet().getSheetProtection().setDeleteColumns(false);
-        productSheet.getCTWorksheet().getSheetProtection().setDeleteRows(false);
+        prod.protectSheet("");
+        prod.getCTWorksheet().getSheetProtection().setSelectLockedCells(true);
+        prod.getCTWorksheet().getSheetProtection().setSelectUnlockedCells(false);
+        prod.getCTWorksheet().getSheetProtection().setFormatCells(false);
+        prod.getCTWorksheet().getSheetProtection().setFormatColumns(false);
+        prod.getCTWorksheet().getSheetProtection().setFormatRows(false);
+        prod.getCTWorksheet().getSheetProtection().setInsertColumns(false);
+        prod.getCTWorksheet().getSheetProtection().setInsertRows(false);
+        prod.getCTWorksheet().getSheetProtection().setInsertHyperlinks(false);
+        prod.getCTWorksheet().getSheetProtection().setDeleteColumns(false);
+        prod.getCTWorksheet().getSheetProtection().setDeleteRows(false);
     }
 
     // ── スタイル生成 ──────────────────────────────────────────────────────────────
