@@ -29,11 +29,21 @@ mvn spring-boot:run
 
 ## テスト
 
-`src/test/` に **JUnit テストクラスは存在しない**。テストはすべて統合スクリプトで実施:
+`src/test/` に **JUnit テストクラスは存在しない**。
 
+**統合テスト（シェルスクリプト）:** ビルド・起動・HTTP レスポンス・Content-Type ヘッダー・XLSX マジックバイトを検証。
 ```powershell
-./test_start.ps1   # ビルド・起動・HTTPレスポンス・Content-Typeヘッダー・XLSXマジックバイトを検証
+./test_start.ps1
 ```
+
+**E2E テスト（Playwright）:** `e2e/` ディレクトリで管理。アプリが http://localhost:8080 で起動している状態で実行。
+```powershell
+cd e2e
+npx playwright test               # ヘッドレス
+npx playwright test --headed      # ブラウザ表示
+npx playwright test --ui          # インタラクティブ UI
+```
+初回のみ `npm install` と `npx playwright install chromium` が必要。
 
 ユニットテストを追加した場合の単一テスト実行:
 ```

@@ -15,3 +15,8 @@ src/main/resources/static/
 .app.pid
 .claude/settings.local.json
 .metals/
+
+# Playwright
+e2e/node_modules/
+e2e/test-results/
+e2e/playwright-report/
