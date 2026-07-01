@@ -1,10 +1,19 @@
 spring:
   application:
     name: sample-apache-poi-web
+  # SPRING_PROFILES_ACTIVE 環境変数で接続先を切り替え（未指定なら local）
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:local}
   mvc:
     async:
       # 大規模 Excel 生成（SXSSF 100万行）のタイムアウト対策
       request-timeout: 300000
+
+# MyBatis 共通設定
+mybatis:
+  configuration:
+    # sale_date -> saleDate のように snake_case を camelCase にマッピング
+    map-underscore-to-camel-case: true
 
 server:
   port: 8080

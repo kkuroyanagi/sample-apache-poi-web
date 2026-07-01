@@ -1,0 +1,11 @@
+# ローカル開発用プロファイル（docker compose の PostgreSQL に接続）
+# 各値は環境変数で上書き可能。未指定なら compose.yml の既定値を使用する。
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5433/poidb}
+    username: ${DB_USERNAME:poi}
+    password: ${DB_PASSWORD:poi}
+  sql:
+    init:
+      # 起動時に schema.sql / data.sql を投入（ローカルは毎回初期化）
+      mode: always

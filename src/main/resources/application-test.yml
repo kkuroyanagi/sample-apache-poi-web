@@ -1,0 +1,15 @@
+# テストサーバー用プロファイル
+# 認証情報はリポジトリにコミットせず、環境変数から必須で受け取る。
+#   SPRING_PROFILES_ACTIVE=test
+#   DB_URL=jdbc:postgresql://<host>:5432/<db>
+#   DB_USERNAME=<user>
+#   DB_PASSWORD=<password>
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  sql:
+    init:
+      # テストサーバーの DB はサーバー側で管理する想定のため自動投入しない
+      mode: never

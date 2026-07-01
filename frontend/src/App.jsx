@@ -156,6 +156,7 @@ export default function App() {
   const editable  = useDownload('/api/excel/download-editable', 'sales_editable.xlsx')
   const protectedSheet = useDownload('/api/excel/download-protected', 'protected_category_sales.xlsx')
   const conditional = useDownload('/api/excel/download-conditional', 'conditional_color.xlsx')
+  const fromDb    = useDownload('/api/excel/download-db',       'sales_report_db.xlsx')
 
   return (
     <div className="container">
@@ -259,6 +260,22 @@ export default function App() {
           {conditional.loading ? 'ダウンロード中...' : '条件付き書式 Excel をダウンロード'}
         </button>
         {conditional.error && <p className="error">{conditional.error}</p>}
+      </main>
+
+      <main className="card">
+        <h2>売上レポート（DB 取得） — PostgreSQL + MyBatis</h2>
+        <table>
+          <tbody>
+            <tr><th>データソース</th><td>PostgreSQL の sales テーブル</td></tr>
+            <tr><th>取得方式</th><td>MyBatis（SaleMapper.findAll）</td></tr>
+            <tr><th>接続切替</th><td>SPRING_PROFILES_ACTIVE（local / test）+ 環境変数</td></tr>
+            <tr><th>形式</th><td>Excel (.xlsx)・スタイル付き単一シート</td></tr>
+          </tbody>
+        </table>
+        <button onClick={fromDb.download} disabled={fromDb.loading}>
+          {fromDb.loading ? 'ダウンロード中...' : 'DB からダウンロード'}
+        </button>
+        {fromDb.error && <p className="error">{fromDb.error}</p>}
       </main>
 
       <PerfCard />
