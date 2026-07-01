@@ -155,6 +155,7 @@ export default function App() {
   const multi     = useDownload('/api/excel/download-multi',    'sales_5sheets.xlsx')
   const editable  = useDownload('/api/excel/download-editable', 'sales_editable.xlsx')
   const protectedSheet = useDownload('/api/excel/download-protected', 'protected_category_sales.xlsx')
+  const conditional = useDownload('/api/excel/download-conditional', 'conditional_color.xlsx')
 
   return (
     <div className="container">
@@ -241,6 +242,23 @@ export default function App() {
           {protectedSheet.loading ? 'ダウンロード中...' : '保護シート Excel をダウンロード'}
         </button>
         {protectedSheet.error && <p className="error">{protectedSheet.error}</p>}
+      </main>
+
+      <main className="card">
+        <h2>条件付き書式デモ — プルダウン連動の背景色</h2>
+        <table>
+          <tbody>
+            <tr><th>構成</th><td>選択列＋メモ列のペア × 50（合計100列）・10,000行</td></tr>
+            <tr><th>選択列</th><td>プルダウンで「赤・黄・緑・青」から選択</td></tr>
+            <tr><th>メモ列（隣）</th><td>左隣の選択値に応じて背景色が変化（赤→赤、青→青 …）</td></tr>
+            <tr><th>色が消える条件</th><td>色付きセルに文字列を入力すると背景色が無くなる</td></tr>
+            <tr><th>生成方式</th><td>SXSSF ストリーミング（100万セル規模）</td></tr>
+          </tbody>
+        </table>
+        <button onClick={conditional.download} disabled={conditional.loading}>
+          {conditional.loading ? 'ダウンロード中...' : '条件付き書式 Excel をダウンロード'}
+        </button>
+        {conditional.error && <p className="error">{conditional.error}</p>}
       </main>
 
       <PerfCard />
