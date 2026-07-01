@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: sample-apache-poi-web
+  mvc:
+    async:
+      # 大規模 Excel 生成（SXSSF 100万行）のタイムアウト対策
+      request-timeout: 300000
+
+server:
+  port: 8080

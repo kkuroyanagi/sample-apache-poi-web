@@ -146,7 +146,7 @@ npx playwright test --ui          # インタラクティブ UI モード
 │   │       ├── ExcelProtectedController.java    # 保護シート
 │   │       └── ExcelPerfController.java         # XSSF/SXSSF 比較
 │   └── resources/
-│       └── application.properties
+│       └── application.yml
 ├── frontend/
 │   ├── src/
 │   │   ├── App.jsx                 # メイン UI

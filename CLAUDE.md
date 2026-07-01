@@ -72,5 +72,5 @@ mvn test -Dtest=ClassName#methodName
 ## 技術的な重要事項
 
 - **XSSF vs SXSSF:** `ExcelPerfController` でインメモリ (XSSF) とストリーミング (SXSSF) の Excel 生成をベンチマーク。SXSSF は行をテンポラリファイルに書き出してメモリ上にスライディングウィンドウのみ保持するため、大規模データセットに適している。パフォーマンス指標はレスポンスヘッダー (`X-Row-Count`、`X-Generation-Time-Ms`、`X-Heap-Delta-MB`) で返される。
-- **非同期タイムアウト:** `application.properties` の `spring.mvc.async.request-timeout=300000`（5分）により、大きな Excel ファイルの生成に対応。
+- **非同期タイムアウト:** `application.yml` の `spring.mvc.async.request-timeout: 300000`（5分）により、大きな Excel ファイルの生成に対応。
 - **ポート:** デフォルト 8080。スクリプトは `PORT=XXXX` での上書きをサポート。
